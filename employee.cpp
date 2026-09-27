@@ -43,7 +43,7 @@ int main() {
     cout << "\n----------------------" << endl;
 
     // Using parameterized constructor
-    Employee emp2(101, "samiksha", 70000, 10000);
+    Employee emp2(101, "riddhi", 70000, 10000);
 
     cout << "Parameterized constructor - Employee 2:" << endl;
     emp2.display();
