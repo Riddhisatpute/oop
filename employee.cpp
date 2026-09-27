@@ -1,65 +1,54 @@
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 using namespace std;
 
 class Employee {
 private:
-int EmployeeID;
-string name;
-float basicSalary;
-float bonus;
-float totalSalary;
+    int employeeID;
+    string name;
+    float basicSalary;
+    float bonus;
+    float totalSalary;
 
 public:
+    // Default constructor
+    Employee() : employeeID(0), name("Unknown"), basicSalary(0), bonus(0), totalSalary(0) {}
 
-//default constructor
-Employee() {
-EmployeeID = 0;
-name = "Unknown";
-basicSalary = 0;
-bonus = 0;
-totalSalary = 0;
-}
+    // Parameterized constructor
+    Employee(int id, const string& n, float salary, float b)
+        : employeeID(id), name(n), basicSalary(salary), bonus(b) {
+        calculateTotalSalary();
+    }
 
-//Parameterized constuctor
-Employee(int id, string n,float salary, float b) {
-EmployeeID = id;
-name = n;
-basicSalary = salary;
-bonus = b;
-calculatetotalSalary();
-}
+    void calculateTotalSalary() {
+        totalSalary = basicSalary + bonus;
+    }
 
-void calculatetotalSalary() {
-totalSalary = basicSalary + bonus;
-}
-
-void display() {
-cout<<"EmployeeID:" << EmployeeID<<endl;
-cout<<"Name: " << name<< endl;
-cout<<"basicSalary:"<< basicSalary <<endl;
-cout<<"bonus:"<< bonus<<endl;
-cout<<"totalSalary:"<< totalSalary<<endl;
-}
+    void display() const {
+        cout << "EmployeeID: " << employeeID << endl;
+        cout << "Name: " << name << endl;
+        cout << "basicSalary: " << basicSalary << endl;
+        cout << "bonus: " << bonus << endl;
+        cout << "totalSalary: " << totalSalary << endl;
+    }
 };
 
 int main() {
+    // Using default constructor
+    Employee emp1;
 
-//using default constructor
-Employee Emp1;
+    cout << "Default constructor - Employee 1:" << endl;
+    emp1.display();
 
-cout<<"Default constructor - Employee 1:" <<endl;
-Emp1.display();
+    cout << "\n----------------------" << endl;
 
-cout<<"\n----------------------"<<endl;
+    // Using parameterized constructor
+    Employee emp2(101, "samiksha", 70000, 10000);
 
-//using parameterized constructor
-Employee Emp2(101,"samiksha",70000, 10000);
+    cout << "Parameterized constructor - Employee 2:" << endl;
+    emp2.display();
 
-cout<<"parameterized constructor- Employee 2:"<<endl;
-Emp2.display();
+    cout << "\n----------------------" << endl;
 
-cout<<"\n----------------------"<<endl;
-
-return 0;
+    return 0;
 }
